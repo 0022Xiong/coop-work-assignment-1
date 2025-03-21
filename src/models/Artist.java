@@ -2,10 +2,9 @@ package models;
 
 public class Artist {
 
-
-    //TODO The artist name (String artistName)  in the system is entered by the user.
-    //     Default value is "".#
-    //     When creating the Artist, truncate the name to 15 characters.3
+    //TODO The artist name (String artistName)  in the system is entered by the user. #
+    //     Default value is "". #
+    //     When creating the Artist, truncate the name to 15 characters.3 #
     //     When updating an existing Artist, only update the name if it is 15 characters or less.#
     private String artistName = "";
 
@@ -25,7 +24,7 @@ public class Artist {
     public void setArtistName(String artistName) {
         if(artistName.length() > 15){
             this.artistName = artistName.substring(0,15);
-        }
+        }//To validation and cut the name
         else {
             this.artistName = artistName;
         }
@@ -38,13 +37,18 @@ public class Artist {
         this.verified = verified;
     }
 
-    //TODO Add a generated equals method.
+    //TODO Add a generated equals method.?
 
 
-    //TODO The toString should return the string in this format:
-    //      Taylor Swift is a verified artist  OR
-    //      Shane Hennessy is not a verified artist
+    //TODO The toString should return the string in this format: #
+    //      Taylor Swift is a verified artist # OR
+    //      Shane Hennessy is not a verified artist #
     public String toString() {
-        return artistName + " is a " + " artist ";
+        if(verified) {
+            return artistName + " is a verified artist ";
+        }
+        else {
+            return artistName + " is not a verified artist ";
+        }
     }
 }

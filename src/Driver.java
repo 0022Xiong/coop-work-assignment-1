@@ -42,7 +42,7 @@ public class Driver {
 
 
     //TODO Add a method, load().  The return type is void.
-    //    This method uses the XStream component to deserialise the playList object and their associated artists from
+    //    This method uses the XStream component to deserialize the playList object and their associated artists from
     //    an XML file into the Songs array list.
 
 

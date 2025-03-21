@@ -4,34 +4,54 @@ import models.Song;
 
 import java.util.ArrayList;
 public class Playlist {
-    private String playlistName; // valid length is 20 - default to the first 20 characters of input.
-    private ArrayList<Song> songs = new ArrayList<Song>();  // should start empty
-    private String description; // valid length is 30 - default to the first 30 characters of input.
+    private String playlistName = ""; // valid length is 20 - default to the first 20 characters of input.
+    private ArrayList<Song> songs = new ArrayList<>();  // should start empty
+    private String description = ""; // valid length is 30 - default to the first 30 characters of input.
 
     private int likes = 0;
 
-    //TODO Declare an array list of songs(songs). This should be empty at the start and does not need to be the constructor.
+    //TODO Declare an array list of songs(songs). This should be empty at the start and does not need to be the constructor. #
 
-    //TODO playlist name (String playlistName) of the playlist in the system in the system is entered by the user.
-    //     Default value is "".
-    //     When creating the playlist, truncate the name to 20 characters.
-    //     When updating an existing playlist, only update the name if it is 20 characters or less.
+    //TODO playlist name (String playlistName) of the playlist in the system in the system is entered by the user. #
+    //     Default value is "". #
+    //     When creating the playlist, truncate the name to 20 characters. #
+    //     When updating an existing playlist, only update the name if it is 20 characters or less. #
+    public String getPlaylistName() {
+        return playlistName;
+    }
+    public void setPlaylistName(String playlistName) {
+        if(playlistName.length() > 20) {
+            this.playlistName = playlistName.substring(0,20);
+        }
+        else {
+            this.playlistName = playlistName;
+        }
+    }
 
-
-    //TODO The playlist description (String description) of the playlist in the system is entered by the user.
-    //     Default value is "".
-    //     When creating the playlist, truncate the description to 30 characters.
-    //     When updating an existing playlist, only update the description if it is 30 characters or less.
-
-    //TODO The number of likes a playlist has (int likes)
-    //    This should start at 0 and not be part of the constructor
-
-
+    //TODO The playlist description (String description) of the playlist in the system is entered by the user. #
+    //     Default value is "". #
+    //     When creating the playlist, truncate the description to 30 characters. #
+    //     When updating an existing playlist, only update the description if it is 30 characters or less. #
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        if(description.length() > 30) {
+            this.description = description.substring(0,30);
+        }
+        else {
+            this.description = description;
+        }
+    }
+    //TODO The number of likes a playlist has (int likes) #
+    //    This should start at 0 and not be part of the constructor #
 
     //TODO Add the constructor, Playlist(String, String), that adheres to the above validation rules.
     //     The order of the fields in the parameter list is the same as the order of fields above i.e. playlistName is
     //     first, then description.
+    public Playlist(String playlistName, String description) {
 
+    }
     //TODO Add a getter and setter for each field, that adheres to the above validation rules
 
     //-------------------------------------
@@ -76,7 +96,7 @@ public class Playlist {
     //TODO  Add a method  findSong(String) which returns a Song object:
     //       - if the supplied string (songName) matches a song name in the songs list,   the Song object that matches that name  is returned
     //       - if the supplied string (songName) does not match a song name in the songs list, null is returned
-    //       NOTE - if that name appears more than once, it is sufficient to return the first occurence.
+    //       NOTE - if that name appears more than once, it is sufficient to return the first occurrence.
 
 
     //-------------------------------------
