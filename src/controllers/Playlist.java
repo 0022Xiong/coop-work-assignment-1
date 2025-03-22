@@ -10,12 +10,12 @@ public class Playlist {
 
     private int likes = 0;
 
-    //TODO Declare an array list of songs(songs). This should be empty at the start and does not need to be the constructor. #
+    //TO-DO Declare an array list of songs(songs). This should be empty at the start and does not need to be the constructor. #
 
-    //TODO playlist name (String playlistName) of the playlist in the system in the system is entered by the user. #
+    //TO-DO playlist name (String playlistName) of the playlist in the system in the system is entered by the user. #
     //     Default value is "". #
     //     When creating the playlist, truncate the name to 20 characters. #
-    //     When updating an existing playlist, only update the name if it is 20 characters or less. #
+    //     When updating an existing playlist, only update the name if it is 20 characters or fewer. #
     public String getPlaylistName() {
         return playlistName;
     }
@@ -28,10 +28,10 @@ public class Playlist {
         }
     }
 
-    //TODO The playlist description (String description) of the playlist in the system is entered by the user. #
+    //TO-DO The playlist description (String description) of the playlist in the system is entered by the user. #
     //     Default value is "". #
     //     When creating the playlist, truncate the description to 30 characters. #
-    //     When updating an existing playlist, only update the description if it is 30 characters or less. #
+    //     When updating an existing playlist, only update the description if it is 30 characters or fewer. #
     public String getDescription() {
         return description;
     }
@@ -43,16 +43,25 @@ public class Playlist {
             this.description = description;
         }
     }
-    //TODO The number of likes a playlist has (int likes) #
+
+    //TO-DO The number of likes a playlist has (int likes) #
     //    This should start at 0 and not be part of the constructor #
 
-    //TODO Add the constructor, Playlist(String, String), that adheres to the above validation rules.
+    //TO-DO Add the constructor, Playlist(String, String), that adheres to the above validation rules. #
     //     The order of the fields in the parameter list is the same as the order of fields above i.e. playlistName is
-    //     first, then description.
+    //     first, then description. #
     public Playlist(String playlistName, String description) {
-
+        setPlaylistName(playlistName);
+        setDescription(description);
     }
-    //TODO Add a getter and setter for each field, that adheres to the above validation rules
+
+    //TO-DO Add a getter and setter for each field, that adheres to the above validation rules #
+    public int getLikes() {
+        return likes;
+    }
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }//Allow the user to use negative int to show they dislike.
 
     //-------------------------------------
     //  ARRAYLIST CRUD
@@ -61,6 +70,9 @@ public class Playlist {
     //TODO Add a method, addSong(Song). The return type is boolean.
     //     This method will add the song object, passed as a parameter to the arraylist of songs.
     //     If the add was successful, return true, otherwise, return false.
+    public boolean addSong(Song) {
+
+    }//Not yet until Song finished
 
 
     //TODO Add a method, updateSong(int, Song).  The return type is boolean.
@@ -208,7 +220,9 @@ public class Playlist {
     //    If there are no songs stored in the array list, return a string that contains "No songs".
     //    If there are no songs whose name contains the supplied string, the return string should
     //    have "No songs found".
+    public String searchSongByName(String name) {
 
+    }
 
     //TODO Add a method, searchSongsByArtistName(String).  The return type is String.
     //    This method returns a list of songs whose artist name contains the string passed
@@ -219,17 +233,29 @@ public class Playlist {
     //    If there are no songs stored in the array list, return a string that contains "No songs".
     //    If there are no songs whose name contains the supplied string, the return string should
     //    have "No songs found for this artist.
+    public String searchSongsByArtistName(String artist) {
+        for(Song song : songs){
+            boolean result = false;
+//            if(song)
+        }
 
+    }//wait for Song.java
 
     //-------------------------
     // HELPER METHODS
     //-------------------------
 
-    //TODO Add a method, isValidIndex(int).  The return type is boolean.
-    //    This method returns true if the value passed as a parameter is a valid index in the arraylist.
-    //    However, if the index is not valid, false is returned.
-
-
+    //TO-DO Add a method, isValidIndex(int).  The return type is boolean. #
+    //    This method returns true if the value passed as a parameter is a valid index in the arraylist. #
+    //    However, if the index is not valid, false is returned. #
+    public boolean isValidIndex(int index) {
+        if(index <= (songs.size() - 1)){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
 }
 

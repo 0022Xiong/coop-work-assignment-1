@@ -1,23 +1,25 @@
 package models;
 
+import java.util.Objects;
+
 public class Artist {
 
-    //TODO The artist name (String artistName)  in the system is entered by the user. #
+    //TO-DO The artist name (String artistName)  in the system is entered by the user. #
     //     Default value is "". #
     //     When creating the Artist, truncate the name to 15 characters.3 #
-    //     When updating an existing Artist, only update the name if it is 15 characters or less.#
+    //     When updating an existing Artist, only update the name if it is 15 characters or fewer.#
     private String artistName = "";
 
-    //TODO The verified status (boolean verified)  Default is false.#
+    //TO-DO The verified status (boolean verified)  Default is false.#
     private boolean verified = false;
 
-    //TODO Add the constructor, Artist(String, boolean), that adheres to the above validation rules #
+    //TO-DO Add the constructor, Artist(String, boolean), that adheres to the above validation rules #
     public Artist(String artistName, boolean verified) {
         setArtistName(artistName);
         setVerified(verified);
     }
 
-    //TODO Add a getter and setter for each field, that adheres to the above validation rules #
+    //TO-DO Add a getter and setter for each field, that adheres to the above validation rules #
     public String getArtistName() {
         return artistName;
     }
@@ -37,10 +39,22 @@ public class Artist {
         this.verified = verified;
     }
 
-    //TODO Add a generated equals method.?
+    //TODO Add a generated equals method. ?
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Artist artist = (Artist) o;
+        return isVerified() == artist.isVerified() && Objects.equals(getArtistName(), artist.getArtistName());
+    }//Is this so?
 
-    //TODO The toString should return the string in this format: #
+    @Override
+    public int hashCode() {
+        return Objects.hash(getArtistName(), isVerified());
+    }//Is this so?
+
+    //TO-DO The toString should return the string in this format: #
     //      Taylor Swift is a verified artist # OR
     //      Shane Hennessy is not a verified artist #
     public String toString() {
