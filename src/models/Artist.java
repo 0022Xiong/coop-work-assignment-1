@@ -39,7 +39,7 @@ public class Artist {
         this.verified = verified;
     }
 
-    //TODO Add a generated equals method. ?
+    //TO-DO Add a generated equals method. #
 
     @Override
     public boolean equals(Object o) {
@@ -47,12 +47,12 @@ public class Artist {
         if (o == null || getClass() != o.getClass()) return false;
         Artist artist = (Artist) o;
         return isVerified() == artist.isVerified() && Objects.equals(getArtistName(), artist.getArtistName());
-    }//Is this so?
+    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getArtistName(), isVerified());
-    }//Is this so?
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(getArtistName(), isVerified());
+//    }//Is this so?
 
     //TO-DO The toString should return the string in this format: #
     //      Taylor Swift is a verified artist # OR

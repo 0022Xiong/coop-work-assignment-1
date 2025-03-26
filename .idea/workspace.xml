@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="920760e5-3f20-4f18-8c9a-1c2c10c099a4" name="Changes" comment="Artist.java finished">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Artist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Artist.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Song.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,7 +26,7 @@
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/0022Xiong/coop-work-assignment-1.git",
-    "accountId": "3eebea55-af10-4276-acb6-206bbfe2b589"
+    "accountId": "100309ff-c266-4530-90e4-611afdbc6f7d"
   }
 }]]></component>
   <component name="ProblemsViewState">
