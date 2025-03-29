@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="920760e5-3f20-4f18-8c9a-1c2c10c099a4" name="Changes" comment="Artist.java finished">
+    <list default="true" id="920760e5-3f20-4f18-8c9a-1c2c10c099a4" name="Changes" comment="tips">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/Artist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Artist.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Song.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,12 +22,12 @@
     &quot;assignee&quot;: &quot;0022Xiong&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/0022Xiong/coop-work-assignment-1.git",
-    "accountId": "100309ff-c266-4530-90e4-611afdbc6f7d"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/0022Xiong/coop-work-assignment-1.git&quot;,
+    &quot;accountId&quot;: &quot;100309ff-c266-4530-90e4-611afdbc6f7d&quot;
   }
-}]]></component>
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -95,7 +94,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742558934989</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="tips">
+      <option name="closed" value="true" />
+      <created>1743001098177</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1743001098177</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,6 +122,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Base" />
     <MESSAGE value="Artist.java finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="Artist.java finished" />
+    <MESSAGE value="tips" />
+    <option name="LAST_COMMIT_MESSAGE" value="tips" />
   </component>
 </project>
