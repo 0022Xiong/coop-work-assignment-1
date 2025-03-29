@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="920760e5-3f20-4f18-8c9a-1c2c10c099a4" name="Changes" comment="tips">
+    <list default="true" id="920760e5-3f20-4f18-8c9a-1c2c10c099a4" name="Changes" comment="Optimized Song.java and Artist.java">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/Playlist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/Playlist.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Song.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -102,7 +103,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743001098177</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Optimized Song.java and Artist.java">
+      <option name="closed" value="true" />
+      <created>1743228248334</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1743228248334</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -123,6 +132,7 @@
     <MESSAGE value="Base" />
     <MESSAGE value="Artist.java finished" />
     <MESSAGE value="tips" />
-    <option name="LAST_COMMIT_MESSAGE" value="tips" />
+    <MESSAGE value="Optimized Song.java and Artist.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Optimized Song.java and Artist.java" />
   </component>
 </project>

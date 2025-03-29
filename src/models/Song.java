@@ -1,13 +1,10 @@
 package models;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class Song {
 
     Artist artist;
-
-//    ArrayList<Artist> artistArray;
 
     //TO-DO The song id (int songId) is between 1000 and 9999(both inclusive).  Default is 9999. #
 
@@ -20,10 +17,6 @@ public class Song {
     //     When updating an existing song, only update the name if it is 20 characters or fewer. #
 
     private String name = "";
-
-//    public Song() {
-//        artistArray = new ArrayList<>();
-//    }
 
     public int getSongId() {
         return songId;
@@ -102,7 +95,7 @@ public class Song {
         return "songId is" + songId + "\n"+
                 "name is" + name +"\n"+
                 artist + "\n" +
-                "the time of song is" + length;
+                "the time of song is" + length + "\n";
     }
 
 }
