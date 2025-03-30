@@ -34,11 +34,18 @@ public class Song {
         return name;
     }
     public void setName(String name) {
-        if(name.length()>20){
-            this.name = name.substring(0,20);
+        if(this.name.isEmpty()){
+            if(name.length()>20){
+                this.name = name.substring(0,20);
+            }
+            else{
+                this.name=name;
+            }
         }
-        else{
-            this.name=name;
+        else {
+            if(name.length() <= 20) {
+                this.name = name;
+            }
         }
     }
 

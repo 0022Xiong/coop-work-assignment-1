@@ -4,10 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="920760e5-3f20-4f18-8c9a-1c2c10c099a4" name="Changes" comment="Optimized Song.java and Artist.java">
+    <list default="true" id="920760e5-3f20-4f18-8c9a-1c2c10c099a4" name="Changes" comment="Finished the Playlist.java?">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SongStore/Driver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SongStore/Driver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SongStore/controllers/Playlist.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SongStore/controllers/Playlist.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SongStore/models/Artist.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SongStore/models/Artist.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SongStore/models/Song.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SongStore/models/Song.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/Playlist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/Playlist.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Song.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/PlaylistTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controllers/PlaylistTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/ArtistTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/models/ArtistTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,26 +48,29 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/27285/Desktop/repos/coop-work-assignment-1&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.ArtistTest.executor": "Run",
+    "JUnit.PlaylistTest.executor": "Run",
+    "JUnit.SongTest.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/27285/Desktop/repos/coop-work-assignment-1",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -111,7 +120,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743228248334</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Finished the Playlist.java?">
+      <option name="closed" value="true" />
+      <created>1743237551031</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1743237551031</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -133,6 +150,7 @@
     <MESSAGE value="Artist.java finished" />
     <MESSAGE value="tips" />
     <MESSAGE value="Optimized Song.java and Artist.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Optimized Song.java and Artist.java" />
+    <MESSAGE value="Finished the Playlist.java?" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished the Playlist.java?" />
   </component>
 </project>

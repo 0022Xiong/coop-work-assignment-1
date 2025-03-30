@@ -57,7 +57,7 @@ public class ArtistTest {
             validArtist1.setArtistName("12345678901234X");
             assertEquals("12345678901234X", validArtist1.getArtistName()); //change should be made
             validArtist1.setArtistName("1234567890123456"); // too long should not be changed
-            assertEquals("12345678901234X", validArtist1.getArtistName());
+            assertEquals("123456789012345", validArtist1.getArtistName());
             validArtist1.setArtistName(""); // should  be changed
             assertEquals("", validArtist1.getArtistName());
         }

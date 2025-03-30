@@ -6,9 +6,8 @@ import models.Song;
 import java.util.ArrayList;
 public class Playlist {
 
-//    private Artist artist;
     private String playlistName = ""; // valid length is 20 - default to the first 20 characters of input.
-    private ArrayList<Song> songs;  // should start empty
+    private ArrayList<Song> songs = new ArrayList<>();  // should start empty
     private String description = ""; // valid length is 30 - default to the first 30 characters of input.
     private int likes = 0;
 
@@ -23,11 +22,18 @@ public class Playlist {
         return playlistName;
     }
     public void setPlaylistName(String playlistName) {
-        if(playlistName.length() > 20) {
-            this.playlistName = playlistName.substring(0,20);
+        if(this.playlistName.isEmpty()) {
+            if(playlistName.length() > 20) {
+                this.playlistName = playlistName.substring(0,20);
+            }
+            else {
+                this.playlistName = playlistName;
+            }
         }
         else {
-            this.playlistName = playlistName;
+            if(playlistName.length() <= 20){
+                this.playlistName = playlistName;
+            }
         }
     }
 
@@ -47,11 +53,18 @@ public class Playlist {
         return description;
     }
     public void setDescription(String description) {
-        if(description.length() > 30) {
-            this.description = description.substring(0,30);
+        if(this.description.isEmpty()){
+            if(description.length() > 30) {
+                this.description = description.substring(0,30);
+            }
+            else {
+                this.description = description;
+            }
         }
         else {
-            this.description = description;
+            if(description.length() <= 30){
+                this.description = description;
+            }
         }
     }
 
@@ -65,6 +78,8 @@ public class Playlist {
     public Playlist(String playlistName, String description) {
         setPlaylistName(playlistName);
         setDescription(description);
+//        setSongs(song);
+//        setLikes(likes);
     }
 
     //TO-DO Add a getter and setter for each field, that adheres to the above validation rules #
@@ -73,12 +88,14 @@ public class Playlist {
         return likes;
     }
     public void setLikes(int likes) {
-        this.likes = likes;
-    }//Allow the user to use negative int to show they dislike.
-
-    public Playlist() {
-        songs = new ArrayList<>();
+        if(likes >= 0){
+            this.likes = likes;
+        }
     }
+
+//    public Playlist() {
+//        songs = new ArrayList<>();
+//    }
 
     //-------------------------------------
     //  ARRAYLIST CRUD
@@ -135,36 +152,36 @@ public class Playlist {
     //  ARRAYLIST - Utility methods
     //-------------------------------------
 
-    //TODO Add a method isValidIndex(int) which returns an boolean -
+    //TO-DO Add a method isValidIndex(int) which returns a boolean -
     //      - returns true if the index is valid for the songs arrayList (in range)
     //      - returns false otherwise
     //      As this method is used inside this class, it should be private
 
-    public boolean isValidIndex(int index) {
-        return (index <= songs.size() && index >= 0);
+    private boolean isValidIndex(int index) {
+        return (index < songs.size() && index >= 0);
     }
 
 //    private boolean isValidIndex(int index) {
 //        return (index <= songs.size() && index >= 0);
 //    }
 
-    //TODO  Add a method  findSong(int) which returns a Song object:
+    //TO-DO  Add a method  findSong(int) which returns a Song object:
     //       - if the supplied index is valid, the Song object at that location is returned
     //       - if the supplied index is invalid, null is returned
 
-    public Song findSong(int index) {
+    private Song findSongIndex(int index) {
         if(isValidIndex(index)) {
             return songs.get(index);
         }
         return null;
-    }
+    }//add -Index to avoid the conflict
 
     //TO-DO  Add a method  findSong(String) which returns a Song object:
     //       - if the supplied string (songName) matches a song name in the songs list, the Song object that matches that name  is returned
     //       - if the supplied string (songName) does not match a song name in the songs list, null is returned
     //       NOTE - if that name appears more than once, it is sufficient to return the first occurrence.
 
-    public Song findSong(String songName) {
+    public Song findSongName(String songName) {
         if(!songs.isEmpty()){
             for(Song song : songs) {
                 if(song.getName().equals(songName)){
@@ -174,7 +191,7 @@ public class Playlist {
             return null;
         }
         return null;
-    }
+    }//add -Name to avoid the conflict
 
     //-------------------------------------
     //  ARRAYLIST -  Verified Status Update
@@ -267,9 +284,9 @@ public class Playlist {
             for(int index = 0; index < songs.size(); index++) {
                 songList += index + ": " + songs.get(index);
             }
-            return songList;
+            return "Songs from playlist : \n" + songList;
         }
-        return "No Songs in playlist";
+        return "No songs in playlist.";
     }
 
     //TO-DO Add a method, listSongsFromVerifiedArtists().  The return type is String.
@@ -291,11 +308,11 @@ public class Playlist {
                 }
             }
             if(songList.isEmpty()){
-                return "There are no songs from verified artists on this playlist";
+                return "There are no songs from verified artists on this playlist.";
             }
             return songList;
         }
-        return "No Songs in playlist";
+        return "No songs in playlist.";
     }
 
     //TO-DO Add a method, listSongsLongerThan(int).  The return type is String.
@@ -316,10 +333,11 @@ public class Playlist {
                 }
             }
             if(songList.isEmpty()){
-                return "There are no songs on this playlist longer than " + length;
+                return "There are no songs on this playlist longer than :" + length + "secs";
             }
+            return songList;
         }
-        return "No songs in playlist";
+        return "No songs in playlist.";
     }
 
     //TO-DO Add a method, listOfSongsOfArtist(String).  The return type is String.
@@ -336,28 +354,32 @@ public class Playlist {
         if(!songs.isEmpty()){
             String songList = "";
             for(int index = 0; index < songs.size(); index++){
-                if(songs.get(index).getArtist().getArtistName().equals(artistName)) {
+                if(songs.get(index).getArtist().getArtistName().equals(artistName) && songs.get(index).getArtist().isVerified()) {
                     songList += index + ": " + songs.get(index);
                 }
             }
             if(songList.isEmpty()){
-                return "There are no song on this playlist by " + artistName;
+                return "There are no  songs on this playlist by " + artistName;
             }
+            return songList;
         }
-        return "No songs in playlist";
+        return "No songs in playlist.";
     }
 
     //------------------------------
     //  FINDING METHODS
     //-------------------------------
 
-    //TODO Add a method, findSong(int).  The return type is Song.
+    //TO-DO Add a method, findSong(int).  The return type is Song.
     //    This method returns the song stored at the index that was passed as a parameter.
     //    However, if the index is not valid, null is returned.
 
-//    public Song findSong(int index) {
-//
-//    }
+    public Song findSongIndexPublic(int index) {
+        if (isValidIndex(index)) {
+            return songs.get(index);
+        }
+        return null;
+    }
 
     //TODO Add a method, findSongByCode(int).  The return type is Song.
     //    This method searches the array list for a song with a specific code (passed as a parameter).
@@ -376,7 +398,7 @@ public class Playlist {
             return null;
         }
         return null;
-    }
+    }//What is code?
 
     //------------------------------
     //  SEARCHING METHODS
@@ -434,15 +456,13 @@ public class Playlist {
     // HELPER METHODS
     //-------------------------
 
-    //TODO Add a method, isValidIndex(int).  The return type is boolean. #
+    //TO-DO Add a method, isValidIndex(int).  The return type is boolean. #
     //    This method returns true if the value passed as a parameter is a valid index in the arraylist. #
     //    However, if the index is not valid, false is returned. #
 
-    //A repeat to the code in
-
-//    public boolean isValidIndex(int index) {
-//        return (index <= songs.size() && index >= 0);
-//    }
+    public boolean isValidIndexPublic(int index) {
+        return (index < songs.size() && index >= 0);
+    }
 
 }
 
