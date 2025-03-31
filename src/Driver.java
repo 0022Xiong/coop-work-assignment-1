@@ -93,7 +93,7 @@ private void runMenu(){
         String name = ScannerInput.readNextLine("Enter the name of song :");
         String artistInput = ScannerInput.readNextLine("Enter the artist's name:");
 
-        char vertify = input.next().charAt(0) '
+        char vertify = input.next().charAt(0);
         boolean vertified = false;
         if ((vertify == 'y') || (vertify == 'Y')) {
             vertified = true;
@@ -113,7 +113,7 @@ private void runMenu(){
     }
 
     }
-}
+
     //-----------------------------------------------------------------
     //  Private methods for Search facility
     //-----------------------------------------------------------------
