@@ -28,12 +28,19 @@ public class Artist {
         return artistName;
     }
     public void setArtistName(String artistName) {
-        if(artistName.length() > 15){
-            this.artistName = artistName.substring(0,15);
-        }//To validation and cut the name
+        if(this.artistName.isEmpty()){
+            if(artistName.length() > 15) {
+                this.artistName = artistName.substring(0,15);
+            }//To validation and cut the name
+            else {
+                this.artistName = artistName;
+            }
+        }//create
         else {
-            this.artistName = artistName;
-        }
+            if(artistName.length() <= 15) {
+                this.artistName = artistName;
+            }
+        }//update
     }
 
     public boolean isVerified() {

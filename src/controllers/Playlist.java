@@ -25,16 +25,16 @@ public class Playlist {
         if(this.playlistName.isEmpty()) {
             if(playlistName.length() > 20) {
                 this.playlistName = playlistName.substring(0,20);
-            }
+            }//truncate the playlistName into 20
             else {
                 this.playlistName = playlistName;
             }
-        }
+        }//detect the playlist is creating...
         else {
             if(playlistName.length() <= 20){
                 this.playlistName = playlistName;
             }
-        }
+        }//...or updating
     }
 
     public ArrayList<Song> getSongs() {
@@ -56,16 +56,16 @@ public class Playlist {
         if(this.description.isEmpty()){
             if(description.length() > 30) {
                 this.description = description.substring(0,30);
-            }
+            }//truncate
             else {
                 this.description = description;
             }
-        }
+        }//creating
         else {
             if(description.length() <= 30){
                 this.description = description;
             }
-        }
+        }//updating
     }
 
     //TO-DO The number of likes a playlist has (int likes) #
@@ -78,8 +78,6 @@ public class Playlist {
     public Playlist(String playlistName, String description) {
         setPlaylistName(playlistName);
         setDescription(description);
-//        setSongs(song);
-//        setLikes(likes);
     }
 
     //TO-DO Add a getter and setter for each field, that adheres to the above validation rules #
@@ -90,7 +88,7 @@ public class Playlist {
     public void setLikes(int likes) {
         if(likes >= 0){
             this.likes = likes;
-        }
+        }//avoid negative int
     }
 
 //    public Playlist() {
@@ -106,11 +104,12 @@ public class Playlist {
     //     If the add was successful, return true, otherwise, return false.
 
     public boolean addSong(Song song) {
-        if(songs.add(song)) {
-            return true;
-        }
-        return false;
-    }//
+//        if(songs.add(song)) {
+//            return true;
+//        }
+//        return false;
+        return songs.add(song);//An optimized way
+    }
 
     //TO-DO Add a method, updateSong(int, Song).  The return type is boolean.
     //     This method takes in, as the first parameter, the index of the songs object that you want to update.
@@ -125,7 +124,7 @@ public class Playlist {
             return true;
         }
         return false;
-    }
+    }//no boolean return for .set
 
     //TO-DO Add a method, deleteSong(int).  The return type is Song.
     //     This method takes in the index of the song object that you want to delete.
@@ -134,9 +133,10 @@ public class Playlist {
 
     public Song deleteSong(int index) {
         if(isValidIndex(index)) {
-            Song songDelete = songs.get(index);
-            songs.remove(index);
-            return songDelete;
+//            Song songDelete = songs.get(index);//get the deleted object
+//            songs.remove(index);
+//            return songDelete;
+            return songs.remove(index);//An optimized way
         }
         return null;
     }
@@ -356,8 +356,8 @@ public class Playlist {
             for(int index = 0; index < songs.size(); index++){
                 if(songs.get(index).getArtist().getArtistName().equals(artistName) && songs.get(index).getArtist().isVerified()) {
                     songList += index + ": " + songs.get(index);
-                }
-            }
+                }//verified the artist
+            }//iterate the songs Arraylist
             if(songList.isEmpty()){
                 return "There are no  songs on this playlist by " + artistName;
             }

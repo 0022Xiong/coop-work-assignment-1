@@ -41,12 +41,12 @@ public class Song {
             else{
                 this.name=name;
             }
-        }
+        }//create
         else {
             if(name.length() <= 20) {
                 this.name = name;
             }
-        }
+        }//update
     }
 
     //TODO The song's artist (Artist artist)
