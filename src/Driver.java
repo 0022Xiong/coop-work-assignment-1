@@ -8,6 +8,7 @@ public class Driver {
     private Scanner input = new Scanner(System.in);
     //TODO Define an object of the Playlist here.  It should be declared private.
      private Playlist playlist;
+     private Song song;
     public static void main(String[] args) {
         new Driver();
     }
@@ -60,7 +61,7 @@ private void runMenu(){
             switch(option){
                 case 1 -> Addsong();
                 case 2 -> Showsongs();
-                case 3 -> Updatesongs();
+                case 3 -> Updatesong();
             }
         }
 }
@@ -76,11 +77,17 @@ private void runMenu(){
         if((vertify == 'y') || (vertify == 'Y'))
             vertified = true;
         int length = ScannerInput.readNextInt("Enter the length of song:");
+
         Song song = new Song(songID,name,artistInput,vertified,length);
-      playlist.addSong(new Song(songID,name,artistInput,vertified,length));
+
+        playlist.addSong(new Song(songID,name,artistInput,vertified,length));
     }
 
-    private void Showsongs
+    private void Showsongs(){
+        System.out.println(playlist.listAllSongs());
+    }
+
+    private void Updatesong(){}
     //-----------------------------------------------------------------
     //  Private methods for Search facility
     //-----------------------------------------------------------------
