@@ -83,11 +83,37 @@ private void runMenu(){
         playlist.addSong(new Song(songID,name,artistInput,vertified,length));
     }
 
-    private void Showsongs(){
-        System.out.println(playlist.listAllSongs());
+    private void Showsongs(){System.out.println(playlist.listAllSongs());}
+
+    private void Updatesong(){
+    Showsongs();
+    if(playlist.numberOfSongs() > 0) {
+        int indexToUpdaTe = ScannerInput.readNextInt("Enter the index of the song to update :");
+        int songID = ScannerInput.readNextInt("Enter the songId:");
+        String name = ScannerInput.readNextLine("Enter the name of song :");
+        String artistInput = ScannerInput.readNextLine("Enter the artist's name:");
+
+        char vertify = input.next().charAt(0) '
+        boolean vertified = false;
+        if ((vertify == 'y') || (vertify == 'Y')) {
+            vertified = true;
+        }
+        int length = ScannerInput.readNextInt("Enter the length of song");
+        if (playlist.updateSong(indexToUpdaTe, new Song(songID, name, artistInput, vertified, length))) {;
+        System.out.println("Update Successful");}
+
+
+    else{
+            System.out.println("Update NOT Successful");
+        }
+
+    }
+    else{System.out.println("There no songs for the index number");
+
     }
 
-    private void Updatesong(){}
+    }
+}
     //-----------------------------------------------------------------
     //  Private methods for Search facility
     //-----------------------------------------------------------------
