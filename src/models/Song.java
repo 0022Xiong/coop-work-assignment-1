@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Song {
 
-    Artist artist;
+    private Artist artist;
 
     //TO-DO The song id (int songId) is between 1000 and 9999(both inclusive).  Default is 9999. #
 

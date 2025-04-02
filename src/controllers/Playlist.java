@@ -7,7 +7,8 @@ import java.util.ArrayList;
 public class Playlist {
 
     private String playlistName = ""; // valid length is 20 - default to the first 20 characters of input.
-    private ArrayList<Song> songs = new ArrayList<>();  // should start empty
+//    private ArrayList<Song> songs = new ArrayList<>();
+    private ArrayList<Song> songs; // should start empty
     private String description = ""; // valid length is 30 - default to the first 30 characters of input.
     private int likes = 0;
 
@@ -76,9 +77,14 @@ public class Playlist {
     //     first, then description. #
 
     public Playlist(String playlistName, String description) {
+        songs = new ArrayList<>();
         setPlaylistName(playlistName);
         setDescription(description);
     }
+
+//    public Playlist() {
+//         songs = new ArrayList<>();
+//    }
 
     //TO-DO Add a getter and setter for each field, that adheres to the above validation rules #
 
