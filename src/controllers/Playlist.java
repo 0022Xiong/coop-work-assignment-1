@@ -280,11 +280,11 @@ public class Playlist {
 
     public String listAllSongs() {
         if(!songs.isEmpty()) {
-            String songList = "";
+            String songInList = "";
             for(int index = 0; index < songs.size(); index++) {
-                songList += index + ": " + songs.get(index);
+                songInList += index + ": " + songs.get(index) + "\n";
             }
-            return "Songs from playlist : \n" + songList;
+            return "Songs from playlist : " + getPlaylistName() + "\n" + songInList;
         }
         return "No songs in playlist.";
     }
@@ -462,6 +462,15 @@ public class Playlist {
 
     public boolean isValidIndexPublic(int index) {
         return (index < songs.size() && index >= 0);
+    }
+
+    public String toString() {
+        if(!songs.isEmpty()){
+            return "Playlist Name: " + playlistName + "\n" +
+                    "Playlist Description: " + description + "\n" +
+                    "Songs: \n" + songs;
+        }
+        return "No songs in playlist.";
     }
 
 }
