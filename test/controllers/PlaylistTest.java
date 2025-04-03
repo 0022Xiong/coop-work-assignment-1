@@ -284,9 +284,9 @@ class PlaylistTest {
         @Test
         void testToString() {
             playList.setSongs(songs1);
-            assertTrue(playList.toString().contains("controllers.Playlist Name"));
+            assertTrue(playList.toString().contains("Playlist Name"));//controllers.Playlist Name
             assertTrue(playList.toString().contains("Chill-24"));  //playlist name
-            assertTrue(playList.toString().contains("controllers.Playlist Description"));
+            assertTrue(playList.toString().contains("Playlist Description"));//controllers.Playlist Description
             assertTrue(playList.toString().contains("Chillout songs to study to"));
             assertTrue(playList.toString().contains("Songs"));
             assertTrue(playList.toString().contains("Anti-Hero"));// songname

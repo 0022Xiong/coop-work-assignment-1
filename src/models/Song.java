@@ -37,19 +37,25 @@ public class Song {
         return name;
     }
     public void setName(String name) {
-        if(this.name.isEmpty()){
-            if(name.length()>20){
-                this.name = name.substring(0,20);
-            }
-            else{
-                this.name=name;
-            }
-        }//create
-        else {
-            if(name.length() <= 20) {
-                this.name = name;
-            }
-        }//update
+//        if(this.name.isEmpty()){
+//            if(name.length()>20){
+//                this.name = name.substring(0,20);
+//            }
+//            else{
+//                this.name=name;
+//            }
+//        }//create
+//        else {
+//            if(name.length() <= 20) {
+//                this.name = name;
+//            }
+//        }//update
+        if(name.length() <= 20) {
+            this.name = name;
+        }//create and update
+        else if(this.name.isEmpty()) {
+            this.name = name.substring(0,20);
+        }//create for > 20
     }
 
     //TODO The song's artist (Artist artist)

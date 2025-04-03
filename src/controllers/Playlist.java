@@ -23,19 +23,25 @@ public class Playlist {
         return playlistName;
     }
     public void setPlaylistName(String playlistName) {
-        if(this.playlistName.isEmpty()) {
-            if(playlistName.length() > 20) {
-                this.playlistName = playlistName.substring(0,20);
-            }//truncate the playlistName into 20
-            else {
-                this.playlistName = playlistName;
-            }
-        }//detect the playlist is creating...
-        else {
-            if(playlistName.length() <= 20){
-                this.playlistName = playlistName;
-            }
-        }//...or updating
+//        if(this.playlistName.isEmpty()) {
+//            if(playlistName.length() > 20) {
+//                this.playlistName = playlistName.substring(0,20);
+//            }//truncate the playlistName into 20
+//            else {
+//                this.playlistName = playlistName;
+//            }
+//        }//detect the playlist is creating...
+//        else {
+//            if(playlistName.length() <= 20){
+//                this.playlistName = playlistName;
+//            }
+//        }//...or updating
+        if(playlistName.length() <= 20) {
+            this.playlistName = playlistName;
+        }//create and update
+        else if(this.playlistName.isEmpty()) {
+            this.playlistName = playlistName.substring(0,20);
+        }//create for playlistName's length larger than 20
     }
 
     public ArrayList<Song> getSongs() {
@@ -54,19 +60,25 @@ public class Playlist {
         return description;
     }
     public void setDescription(String description) {
-        if(this.description.isEmpty()){
-            if(description.length() > 30) {
-                this.description = description.substring(0,30);
-            }//truncate
-            else {
-                this.description = description;
-            }
-        }//creating
-        else {
-            if(description.length() <= 30){
-                this.description = description;
-            }
-        }//updating
+//        if(this.description.isEmpty()){
+//            if(description.length() > 30) {
+//                this.description = description.substring(0,30);
+//            }//truncate
+//            else {
+//                this.description = description;
+//            }
+//        }//creating
+//        else {
+//            if(description.length() <= 30){
+//                this.description = description;
+//            }
+//        }//updating
+        if(description.length() <= 30) {
+            this.description = description;
+        }//create and update
+        else if(this.description.isEmpty()) {
+            this.description = description.substring(0,30);
+        }//create for description's length larger than 30
     }
 
     //TO-DO The number of likes a playlist has (int likes) #
@@ -96,10 +108,6 @@ public class Playlist {
             this.likes = likes;
         }//avoid negative int
     }
-
-//    public Playlist() {
-//        songs = new ArrayList<>();
-//    }
 
     //-------------------------------------
     //  ARRAYLIST CRUD
