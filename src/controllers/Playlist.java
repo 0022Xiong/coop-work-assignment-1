@@ -3,6 +3,13 @@ package controllers;
 import models.Artist;
 import models.Song;
 
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 import java.util.ArrayList;
 public class Playlist {
 
@@ -487,5 +494,24 @@ public class Playlist {
         return "No songs in playlist.";
     }
 
+    public void save() throws Exception
+    {
+        XStream xstream = new XStream(new DomDriver()); //1
+        ObjectOutputStream out =
+                xstream.createObjectOutputStream(new FileWriter("Playlist.xml")); //2
+        out.writeObject(songs); //3
+        out.close(); //4
+    }
+
+    @SuppressWarnings("unchecked")
+    public void load() throws Exception {
+        Class<?>[] classes = new Class[] { Song.class }; //1
+        XStream xstream = new XStream(new DomDriver());
+        XStream.setupDefaultSecurity(xstream); //2
+        xstream.allowTypes(classes);
+        ObjectInputStream is = xstream.createObjectInputStream(new FileReader("Playlist.xml")); //3
+        songs = (ArrayList<Song>) is.readObject(); //4
+        is.close(); //5
+    }
 }
 

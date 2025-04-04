@@ -2,9 +2,6 @@ import controllers.Playlist;
 import models.Song;
 import utils.ScannerInput;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Driver {
@@ -13,7 +10,8 @@ public class Driver {
      private Playlist playlist;
      private Song song;
     public static void main(String[] args) {
-        new Driver();
+        Driver driver = new Driver();
+        driver.runMenu();
     }
 
     //TODO Refer to the tutors instructions for building this class and for the menu.  You are free to deviate in any way
@@ -73,26 +71,40 @@ private void runMenu(){
                 case 9 -> listAllSongByVerifiedArtists();
                 case 10-> listAllSongOverAgivenLength();
                 case 11-> listAllSongOverAgivenAritist();
-
+                case 12 -> printAveragelengthOfSongs();
+                case 13 -> printTotallengthOfSongs();
+                case 20 -> savePlaylist();
+                case 21 -> loadPlaylist();
+                case 0 -> System.exit(0);
+                default -> System.out.println("Invalid option entered: " + option);
             }
+            System.out.println("\nPress enter key to continue...");
+            option = mainMenu();
         }
 }
     //------------------------------------
     // Private methods for CRUD on Song
     //------------------------------------
+    private void createPlaylist() {
+        if(playlist == null){
+            String playlistName = ScannerInput.readNextLine("Enter the Name of Playlist: ");
+            String description = ScannerInput.readNextLine("Enter the description: ");
+            playlist = new Playlist(playlistName,description);
+        }
+    }
+
     private void Addsong(){
+        createPlaylist();
         int songID = ScannerInput.readNextInt("Enter the songId:");
         String name = ScannerInput.readNextLine("Enter the name of song :");
         String artistInput = ScannerInput.readNextLine("Enter the artist's name:");
-        char vertify = input.next().charAt(0);
-        boolean vertified = false;
-        if((vertify == 'y') || (vertify == 'Y'))
-            vertified = true;
+        char verify = ScannerInput.readNextChar("The artist is verified(y) or not(n): ");
+        boolean verified = false;
+        if((verify == 'y') || (verify == 'Y'))
+            verified = true;
         int length = ScannerInput.readNextInt("Enter the length of song:");
-
-        Song song = new Song(songID,name,artistInput,vertified,length);
-
-        playlist.addSong(new Song(songID,name,artistInput,vertified,length));
+        Song song = new Song(songID,name,artistInput,verified,length);
+        playlist.addSong(song);
     }
 
     private void Showsongs(){System.out.println(playlist.listAllSongs());}
@@ -187,28 +199,25 @@ private void runMenu(){
     //TODO Add a method, load().  The return type is void.
     //    This method uses the XStream component to deserialize the playList object and their associated artists from
     //    an XML file into the Songs array list.
-    public void load() {
-        XStream xstream = new XStream(new DomDriver());
-        xstream.addPermission(AnyTypePermission.ANY);
-        try (FileInputStream fileInputStream = new FileInputStream("playlist.xml")) {
-            this.playList = (Playlist) xstream.fromXML(fileInputStream);
-            System.out.println("Playlist loaded successfully.");
-        } catch (IOException e) {
-            System.out.println("Error loading playlist: " + e.getMessage());
+
+    private void loadPlaylist() {
+        try {
+            playlist.load();
+        } catch (Exception e) {
+            System.err.println("Error writing to file: " + e);
         }
     }
 
     //TODO Add a method, save().  The return type is void.
     //    This method uses the XStream component to serialise the playList object and their associated artists to
     //    an XML file.
-    public void save() {
-        XStream xstream = new XStream(new DomDriver());
-        xstream.addPermission(AnyTypePermission.ANY);
-        try (FileOutputStream fileOutputStream = new FileOutputStream("playlist.xml")) {
-            xstream.toXML(this.playList, fileOutputStream);
-            System.out.println("Playlist saved successfully.");
-        } catch (IOException e) {
-            System.out.println("Error saving playlist: " + e.getMessage());
+
+    private void savePlaylist() {
+        try {
+            playlist.save();
+        } catch (Exception e) {
+            System.err.println("Error writing to file: " + e);
         }
     }
+
 }
