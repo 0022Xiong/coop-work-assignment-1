@@ -28,19 +28,25 @@ public class Artist {
         return artistName;
     }
     public void setArtistName(String artistName) {
-        if(this.artistName.isEmpty()){
-            if(artistName.length() > 15) {
-                this.artistName = artistName.substring(0,15);
-            }//To validation and cut the name
-            else {
-                this.artistName = artistName;
-            }
-        }//create
-        else {
-            if(artistName.length() <= 15) {
-                this.artistName = artistName;
-            }
-        }//update
+//        if(this.artistName.isEmpty()){
+//            if(artistName.length() > 15) {
+//                this.artistName = artistName.substring(0,15);
+//            }//To validation and cut the name
+//            else {
+//                this.artistName = artistName;
+//            }
+//        }//create
+//        else {
+//            if(artistName.length() <= 15) {
+//                this.artistName = artistName;
+//            }
+//        }//update
+        if(artistName.length() <= 15) {
+            this.artistName = artistName;
+        }//create and update
+        else if(this.artistName.isEmpty()) {
+            this.artistName = artistName.substring(0,15);
+        }//create for artistName's length larger than 15
     }
 
     public boolean isVerified() {

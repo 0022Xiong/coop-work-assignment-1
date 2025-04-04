@@ -7,7 +7,8 @@ import java.util.ArrayList;
 public class Playlist {
 
     private String playlistName = ""; // valid length is 20 - default to the first 20 characters of input.
-    private ArrayList<Song> songs = new ArrayList<>();  // should start empty
+//    private ArrayList<Song> songs = new ArrayList<>();
+    private ArrayList<Song> songs; // should start empty
     private String description = ""; // valid length is 30 - default to the first 30 characters of input.
     private int likes = 0;
 
@@ -22,19 +23,25 @@ public class Playlist {
         return playlistName;
     }
     public void setPlaylistName(String playlistName) {
-        if(this.playlistName.isEmpty()) {
-            if(playlistName.length() > 20) {
-                this.playlistName = playlistName.substring(0,20);
-            }//truncate the playlistName into 20
-            else {
-                this.playlistName = playlistName;
-            }
-        }//detect the playlist is creating...
-        else {
-            if(playlistName.length() <= 20){
-                this.playlistName = playlistName;
-            }
-        }//...or updating
+//        if(this.playlistName.isEmpty()) {
+//            if(playlistName.length() > 20) {
+//                this.playlistName = playlistName.substring(0,20);
+//            }//truncate the playlistName into 20
+//            else {
+//                this.playlistName = playlistName;
+//            }
+//        }//detect the playlist is creating...
+//        else {
+//            if(playlistName.length() <= 20){
+//                this.playlistName = playlistName;
+//            }
+//        }//...or updating
+        if(playlistName.length() <= 20) {
+            this.playlistName = playlistName;
+        }//create and update
+        else if(this.playlistName.isEmpty()) {
+            this.playlistName = playlistName.substring(0,20);
+        }//create for playlistName's length larger than 20
     }
 
     public ArrayList<Song> getSongs() {
@@ -53,19 +60,25 @@ public class Playlist {
         return description;
     }
     public void setDescription(String description) {
-        if(this.description.isEmpty()){
-            if(description.length() > 30) {
-                this.description = description.substring(0,30);
-            }//truncate
-            else {
-                this.description = description;
-            }
-        }//creating
-        else {
-            if(description.length() <= 30){
-                this.description = description;
-            }
-        }//updating
+//        if(this.description.isEmpty()){
+//            if(description.length() > 30) {
+//                this.description = description.substring(0,30);
+//            }//truncate
+//            else {
+//                this.description = description;
+//            }
+//        }//creating
+//        else {
+//            if(description.length() <= 30){
+//                this.description = description;
+//            }
+//        }//updating
+        if(description.length() <= 30) {
+            this.description = description;
+        }//create and update
+        else if(this.description.isEmpty()) {
+            this.description = description.substring(0,30);
+        }//create for description's length larger than 30
     }
 
     //TO-DO The number of likes a playlist has (int likes) #
@@ -76,9 +89,14 @@ public class Playlist {
     //     first, then description. #
 
     public Playlist(String playlistName, String description) {
+        songs = new ArrayList<>();
         setPlaylistName(playlistName);
         setDescription(description);
     }
+
+//    public Playlist() {
+//         songs = new ArrayList<>();
+//    }
 
     //TO-DO Add a getter and setter for each field, that adheres to the above validation rules #
 
@@ -90,10 +108,6 @@ public class Playlist {
             this.likes = likes;
         }//avoid negative int
     }
-
-//    public Playlist() {
-//        songs = new ArrayList<>();
-//    }
 
     //-------------------------------------
     //  ARRAYLIST CRUD
@@ -280,11 +294,11 @@ public class Playlist {
 
     public String listAllSongs() {
         if(!songs.isEmpty()) {
-            String songList = "";
+            String songInList = "";
             for(int index = 0; index < songs.size(); index++) {
-                songList += index + ": " + songs.get(index);
+                songInList += index + ": " + songs.get(index) + "\n";
             }
-            return "Songs from playlist : \n" + songList;
+            return "Songs from playlist : " + getPlaylistName() + "\n" + songInList;
         }
         return "No songs in playlist.";
     }
@@ -462,6 +476,15 @@ public class Playlist {
 
     public boolean isValidIndexPublic(int index) {
         return (index < songs.size() && index >= 0);
+    }
+
+    public String toString() {
+        if(!songs.isEmpty()){
+            return "Playlist Name: " + playlistName + "\n" +
+                    "Playlist Description: " + description + "\n" +
+                    "Songs: \n" + songs;
+        }
+        return "No songs in playlist.";
     }
 
 }

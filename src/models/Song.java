@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Song {
 
-    Artist artist;
+    private Artist artist;
 
     //TO-DO The song id (int songId) is between 1000 and 9999(both inclusive).  Default is 9999. #
 
@@ -22,11 +22,14 @@ public class Song {
         return songId;
     }
     public void setSongId(int songId) {
-        if(songId>9999 || songId<1000){
-            System.out.println("The song id should be between 1000 to 9999");
-        }
-        else{
-            this.songId=songId;
+//        if(songId>9999 || songId<1000){
+//            System.out.println("The song id should be between 1000 to 9999");
+//        }
+//        else{
+//            this.songId=songId;
+//        }
+        if(songId <= 9999 && songId >= 1000){
+            this.songId = songId;
         }
     }
 
@@ -34,19 +37,25 @@ public class Song {
         return name;
     }
     public void setName(String name) {
-        if(this.name.isEmpty()){
-            if(name.length()>20){
-                this.name = name.substring(0,20);
-            }
-            else{
-                this.name=name;
-            }
-        }//create
-        else {
-            if(name.length() <= 20) {
-                this.name = name;
-            }
-        }//update
+//        if(this.name.isEmpty()){
+//            if(name.length()>20){
+//                this.name = name.substring(0,20);
+//            }
+//            else{
+//                this.name=name;
+//            }
+//        }//create
+//        else {
+//            if(name.length() <= 20) {
+//                this.name = name;
+//            }
+//        }//update
+        if(name.length() <= 20) {
+            this.name = name;
+        }//create and update
+        else if(this.name.isEmpty()) {
+            this.name = name.substring(0,20);
+        }//create for > 20
     }
 
     //TODO The song's artist (Artist artist)
@@ -56,11 +65,14 @@ public class Song {
     //TO-DO The length of the song in seconds (int length) is between 1 and 600. Default is 1. #
 
     public void setLength(int seconds) {
-       if(seconds>600 || seconds<1){
-           System.out.println("The length of the song in seconds should be between 1 and 600.");
-       }
-       else{
-           this.length=seconds;
+//       if(seconds>600 || seconds<1){
+//           System.out.println("The length of the song in seconds should be between 1 and 600.");
+//       }
+//       else{
+//           this.length=seconds;
+//       }
+       if(seconds <= 600 && seconds >= 1){
+           this.length = seconds;
        }
     }
     public int getLength() {
@@ -76,10 +88,10 @@ public class Song {
 
     //TO-DO Add the constructor, Song(int, String, Artist), that adheres to the above validation rules #
 
-    public Song(int songId, String name, String artistInput, boolean verified, int length){
+    public Song(int songId, String name, String artistNameInput, boolean verified, int length){
         setSongId(songId);
         setName(name);
-        Artist artistIn = new Artist(artistInput, verified);
+        Artist artistIn = new Artist(artistNameInput, verified);
         setArtist(artistIn);
         setLength(length);
     }
