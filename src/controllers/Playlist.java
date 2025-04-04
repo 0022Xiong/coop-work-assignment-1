@@ -14,10 +14,11 @@ import java.util.ArrayList;
 public class Playlist {
 
     private String playlistName = ""; // valid length is 20 - default to the first 20 characters of input.
-//    private ArrayList<Song> songs = new ArrayList<>();
     private ArrayList<Song> songs; // should start empty
     private String description = ""; // valid length is 30 - default to the first 30 characters of input.
     private int likes = 0;
+
+//    private String[] playlistInformation = {playlistName, description};
 
     //TO-DO Declare an array list of songs(songs). This should be empty at the start and does not need to be the constructor. #
 
@@ -499,6 +500,9 @@ public class Playlist {
         XStream xstream = new XStream(new DomDriver()); //1
         ObjectOutputStream out =
                 xstream.createObjectOutputStream(new FileWriter("Playlist.xml")); //2
+        out.writeObject(playlistName);
+        out.writeObject(description);
+        out.writeObject(likes);
         out.writeObject(songs); //3
         out.close(); //4
     }
@@ -510,6 +514,9 @@ public class Playlist {
         XStream.setupDefaultSecurity(xstream); //2
         xstream.allowTypes(classes);
         ObjectInputStream is = xstream.createObjectInputStream(new FileReader("Playlist.xml")); //3
+        playlistName = (String) is.readObject();
+        description = (String) is.readObject();
+        likes = (int) is.readObject();
         songs = (ArrayList<Song>) is.readObject(); //4
         is.close(); //5
     }
