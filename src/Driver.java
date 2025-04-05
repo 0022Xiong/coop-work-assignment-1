@@ -88,7 +88,7 @@ private int mainMenu(){
         if(isNoPlaylist()){
             int option = ScannerInput.readNextInt("""
                     1)Create
-                    2)Import
+                    2)Load
                     ===>""");
             if(option == 1) {
                 String playlistName = ScannerInput.readNextLine("Enter the Name of Playlist: ");
@@ -103,7 +103,7 @@ private int mainMenu(){
 
     private boolean isNoPlaylist() {
         if(playlist == null){
-            System.out.println("No Playlist currently. You need to create or import one. ");
+            System.out.println("No Playlist currently. You need to create or load one. ");
             return true;
         }
         return false;
@@ -133,6 +133,7 @@ private int mainMenu(){
     }
 
     private void updateSong(){
+        setPlaylist();
         showSongs();
         if(playlist.numberOfSongs() > 0) {
         int indexToUpdate = ScannerInput.readNextInt("Enter the index of the song to update :");
@@ -154,6 +155,7 @@ private int mainMenu(){
     }
 
     private void deleteSong(){
+        setPlaylist();
         showSongs();
         if(playlist.numberOfSongs()>0){
             int indexToDelete = ScannerInput.readNextInt("Enter the index of the song to delete ==>");
@@ -170,6 +172,7 @@ private int mainMenu(){
     //  Private methods for Search facility
     //-----------------------------------------------------------------
     private void setVerifiedStatus(){
+        setPlaylist();
         clearScreen();
         int indexToUpdate = ScannerInput.readNextInt("Enter index of the song to update:");
         char verify = ScannerInput.readNextChar("Enter the new verify:");
@@ -180,18 +183,20 @@ private int mainMenu(){
 
     }
     private void findSongByCode(){
+        setPlaylist();
         clearScreen();
         int codeToFind = ScannerInput.readNextInt("Enter code of the song to find:");
-       Song song = playlist.findSongByCode(codeToFind);
-       if(song != null){
+        Song song = playlist.findSongByCode(codeToFind);
+        if(song != null){
            System.out.println("Song:" + song);
-       }
-       else{
+        }
+        else{
            System.out.println("Song NOT found");
-       }
+        }
     }
 
     private void searchSongByName(){
+        setPlaylist();
         clearScreen();
         String nameToFind = ScannerInput.readNextLine("Enter the name of the song to find");
         String song = playlist.searchSongByName(nameToFind);
@@ -204,36 +209,42 @@ private int mainMenu(){
     }
 
     private void addLikesToPlaylist(){
+        setPlaylist();
         clearScreen();
-     playlist.addLike();
-     System.out.println("Add successful");
-     System.out.println("Total likes =" + playlist.getLikes());
+        playlist.addLike();
+        System.out.println("Add successful");
+        System.out.println("Total likes =" + playlist.getLikes());
     }
     //-----------------------------
     //  Private methods for Reports
     // ----------------------------
     private void listAllSongByVerifiedArtists(){
+        setPlaylist();
         clearScreen();
         System.out.println(playlist.listSongsFromVerifiedArtists());
     }
 
     private void listAllSongOverGivenLength(){
+        setPlaylist();
         clearScreen();
         int length = ScannerInput.readNextInt("Enter the length of song that you want to find:");
         System.out.println(playlist.listSongsLongerThan(length));
     }
 
     private void listAllSongOverGivenArtist(){
+        setPlaylist();
         clearScreen();
-    String artist = ScannerInput.readNextLine("Enter the name of artist:");
-    System.out.println(playlist.listOfSongsOfArtist(artist));
+        String artist = ScannerInput.readNextLine("Enter the name of artist:");
+        System.out.println(playlist.listOfSongsOfArtist(artist));
     }
 
     private void printAverageLengthOfSongs(){
+        setPlaylist();
         System.out.println("The average length of song:" + playlist.getAverageSongLength());
     }
 
     private void printTotalLengthOfSongs(){
+        setPlaylist();
         System.out.println("The total length of songs:" + playlist.getTotalPlayListLength());
     }
 

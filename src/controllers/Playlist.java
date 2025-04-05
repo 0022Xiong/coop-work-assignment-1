@@ -183,9 +183,9 @@ public class Playlist {
         if(!songs.isEmpty()) {
             String songInList = "";
             for(int index = 0; index < songs.size(); index++) {
-                songInList += index + ": " + songs.get(index) + "\n";
+                songInList += index + ": " + "\n" + songs.get(index) + "\n";
             }
-            return "Songs from playlist : " + getPlaylistName() + "\n" + songInList;
+            return "Songs from playlist: " + getPlaylistName() + "\n" + songInList;
         }
         return "No songs in playlist.";
     }
@@ -306,8 +306,8 @@ public class Playlist {
     public String toString() {
         if(!songs.isEmpty()){
             return "Playlist Name: " + playlistName + "\n" +
-                    "Playlist Description: " + description + "\n" +
-                    "Songs: \n" + songs;
+                   "Playlist Description: " + description + "\n" +
+                   "Songs: \n" + songs;
         }
         return "No songs in playlist.";
     }
