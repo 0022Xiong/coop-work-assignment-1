@@ -32,9 +32,8 @@ private int mainMenu(){
                 3) Update a Song
                 4) Delete a Song
                 5) Set verified status of a specific song's artist
-                6) Find a specific Song (by code)
+                6) Find a specific Song (by songID)
                 7) Search for a specific Song (by name)
-                
                 8) Add a like to playlist
                 ---------------------------------------------------------
                 REPORT MENU
@@ -212,18 +211,24 @@ private int mainMenu(){
         int length = ScannerInput.readNextInt("Enter the length of song that you want to find:");
         System.out.println(playlist.listSongsLongerThan(length));
     }
+
     private void listAllSongOverGivenArtist(){
         clearScreen();
     String artist = ScannerInput.readNextLine("Enter the name of artist:");
-    System.out.println(playlist.listOfSongsOfArtist(artist));}
-    private void printAverageLengthOfSongs(){System.out.println("The average length of song:" + playlist.getAverageSongLength());}
-    private void printTotalLengthOfSongs(){System.out.println("The total length of songs:" + playlist.getTotalPlayListLength());}
+    System.out.println(playlist.listOfSongsOfArtist(artist));
+    }
+
+    private void printAverageLengthOfSongs(){
+        System.out.println("The average length of song:" + playlist.getAverageSongLength());
+    }
+
+    private void printTotalLengthOfSongs(){
+        System.out.println("The total length of songs:" + playlist.getTotalPlayListLength());
+    }
+
     //---------------------------------
     //  Private methods for Persistence
     // --------------------------------
-    //TODO Add a method, load().  The return type is void.
-    //    This method uses the XStream component to deserialize the playList object and their associated artists from
-    //    an XML file into the Songs array list.
 
     private void loadPlaylist() {
         try {
@@ -231,11 +236,7 @@ private int mainMenu(){
         } catch (Exception e) {
             System.err.println("Error writing to file: " + e);
         }
-    }
-
-    //TODO Add a method, save().  The return type is void.
-    //    This method uses the XStream component to serialise the playList object and their associated artists to
-    //    an XML file.
+    }//Dry code from Lab5.1
 
     private void savePlaylist() {
         try {
@@ -243,7 +244,7 @@ private int mainMenu(){
         } catch (Exception e) {
             System.err.println("Error writing to file: " + e);
         }
-    }
+    }//Dry code from Lab5.1
 
     private void clearScreen() {
         System.out.print("\033[H\033[2J");
