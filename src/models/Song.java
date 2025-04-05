@@ -67,10 +67,10 @@ public class Song {
     }
 
     public String toString(){
-        return "songId is" + songId + "\n"+
-                "name is" + name +"\n"+
-                artist + "\n" +
-                "the time of song is" + length + "\n";
+        return "SongID is: " + songId + "\n"+
+               "Name is: " + name +"\n"+
+               artist + "\n" +
+               "The time of song is " + length + " seconds"+ "\n";
     }
 
 }

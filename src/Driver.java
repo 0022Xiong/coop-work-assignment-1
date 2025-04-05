@@ -73,34 +73,44 @@ private int mainMenu(){
                 case 13 -> printTotalLengthOfSongs();
                 case 20 -> savePlaylist();
                 case 21 -> loadPlaylist();
-                case 0 -> exit();
                 default -> System.out.println("Invalid option entered: " + option);
             }
             System.out.println("\nPress enter key to continue...");
             option = mainMenu();
         }
+        exit();
     }
     //------------------------------------
     // Private methods for CRUD on Song
     //------------------------------------
-    private void createPlaylist() {
+    private void setPlaylist() {
+        clearScreen();
         if(isNoPlaylist()){
-            String playlistName = ScannerInput.readNextLine("Enter the Name of Playlist: ");
-            String description = ScannerInput.readNextLine("Enter the description: ");
-            playlist = new Playlist(playlistName,description);
+            int option = ScannerInput.readNextInt("""
+                    1)Create
+                    2)Import
+                    ===>""");
+            if(option == 1) {
+                String playlistName = ScannerInput.readNextLine("Enter the Name of Playlist: ");
+                String description = ScannerInput.readNextLine("Enter the description: ");
+                playlist = new Playlist(playlistName,description);
+            }
+            else if(option == 2) {
+                loadPlaylist();
+            }
         }
     }
 
     private boolean isNoPlaylist() {
         if(playlist == null){
-            System.out.println("No Playlist currently. You need to create one. ");
+            System.out.println("No Playlist currently. You need to create or import one. ");
             return true;
         }
         return false;
     }
 
     private void addSong(){
-        createPlaylist();
+        setPlaylist();
         clearScreen();
         int songID = ScannerInput.readNextInt("Enter the songId:");
         String name = ScannerInput.readNextLine("Enter the name of song :");
@@ -117,6 +127,7 @@ private int mainMenu(){
     }
 
     private void showSongs(){
+        setPlaylist();
         clearScreen();
         System.out.println(playlist.listAllSongs());
     }
@@ -231,6 +242,7 @@ private int mainMenu(){
     // --------------------------------
 
     private void loadPlaylist() {
+        playlist = new Playlist("","");//avoid NullPointer
         try {
             playlist.load();
         } catch (Exception e) {
