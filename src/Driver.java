@@ -5,7 +5,7 @@ import utils.ScannerInput;
 import java.util.concurrent.TimeUnit;//https://github.com/ddrohan/VehicleRepository/blob/main/VehicleAppWithArrayList/src/Driver.java line 2
 
 public class Driver {
-    //TODO Define an object of the Playlist here.  It should be declared private.
+
      private Playlist playlist;
      private Song song;
     public static void main(String[] args) {
@@ -13,19 +13,11 @@ public class Driver {
         driver.runMenu();
     }
 
-    //TODO Refer to the tutors instructions for building this class and for the menu.  You are free to deviate in any way
-    //     from the Driver menu that is in the tutors instructions, once you have these included:
-    //     (with tests still compiling)
-    //       - CRUD on Playlist
-    //       - Search facility (for Songs)
-    //       - Reports
-    //       - Persistence
-    // Note:  This is the ONLY class that can talk to the user i.e. have System.out.print and Scanner reads in it.
     //----------------------------------------------------------------------------
     // Private methods for displaying the menu and processing the selected options
     //----------------------------------------------------------------------------
-private int mainMenu(){
-    int option = ScannerInput.readNextInt("""
+    private int mainMenu(){
+        int option = ScannerInput.readNextInt("""
                  Song MENU
                 1) Add a Song
                 2) List all Songs
@@ -46,13 +38,15 @@ private int mainMenu(){
                 ---------------------------------------------------------
                 SETTINGS MENU
                 ---------------------------------------------------------
+                19)Create
                 20)Save
                 21)Load
                 0) Exit
                 ---------------------------------------------------------
                 ====>""");
-    return option;
+        return option;
     }
+
     private void runMenu(){
         clearScreen();
         int option = mainMenu();
@@ -71,6 +65,7 @@ private int mainMenu(){
                 case 11 -> listAllSongOverGivenArtist();
                 case 12 -> printAverageLengthOfSongs();
                 case 13 -> printTotalLengthOfSongs();
+                case 19 -> createPlaylist();
                 case 20 -> savePlaylist();
                 case 21 -> loadPlaylist();
                 default -> System.out.println("Invalid option entered: " + option);
@@ -91,14 +86,18 @@ private int mainMenu(){
                     2)Load
                     ===>""");
             if(option == 1) {
-                String playlistName = ScannerInput.readNextLine("Enter the Name of Playlist: ");
-                String description = ScannerInput.readNextLine("Enter the description: ");
-                playlist = new Playlist(playlistName,description);
+                createPlaylist();
             }
             else if(option == 2) {
                 loadPlaylist();
             }
         }
+    }
+
+    private void createPlaylist() {
+        String playlistName = ScannerInput.readNextLine("Enter the Name of Playlist: ");
+        String description = ScannerInput.readNextLine("Enter the description: ");
+        playlist = new Playlist(playlistName,description);
     }
 
     private boolean isNoPlaylist() {
@@ -136,22 +135,27 @@ private int mainMenu(){
         setPlaylist();
         showSongs();
         if(playlist.numberOfSongs() > 0) {
-        int indexToUpdate = ScannerInput.readNextInt("Enter the index of the song to update :");
-        int songID = ScannerInput.readNextInt("Enter the songId:");
-        String name = ScannerInput.readNextLine("Enter the name of song :");
-        String artistInput = ScannerInput.readNextLine("Enter the artist's name:");
+            int indexToUpdate = ScannerInput.readNextInt("Enter the index of the song to update :");
+            int songID = ScannerInput.readNextInt("Enter the songId:");
+            String name = ScannerInput.readNextLine("Enter the name of song :");
+            String artistInput = ScannerInput.readNextLine("Enter the artist's name:");
 
-        char verify = ScannerInput.readNextChar("Enter the new verify:");
-        boolean verified = false;
-        if ((verify == 'y') || (verify == 'Y')) {
-            verified = true;
+            char verify = ScannerInput.readNextChar("Enter the new verify:");
+            boolean verified = false;
+            if ((verify == 'y') || (verify == 'Y')) {
+                verified = true;
+            }
+            int length = ScannerInput.readNextInt("Enter the length of song");
+            if (playlist.updateSong(indexToUpdate, new Song(songID, name, artistInput, verified, length))) {
+                System.out.println("Update Successful");
+            }
+            else {
+                System.out.println("Update NOT Successful");
+            }
         }
-        int length = ScannerInput.readNextInt("Enter the length of song");
-        if (playlist.updateSong(indexToUpdate, new Song(songID, name, artistInput, verified, length)))
-        {System.out.println("Update Successful");}
-    else{System.out.println("Update NOT Successful");}
-    }
-    else{System.out.println("There no songs for the index number");}
+        else{
+            System.out.println("There no songs for the index number");
+        }
     }
 
     private void deleteSong(){
